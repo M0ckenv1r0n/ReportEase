@@ -1,47 +1,101 @@
 # ReportEase: AI-Powered Report Generation Tool
 
-**ReportEase** is an advanced productivity tool designed to streamline the report-writing process for teams, focusing on efficiency, security, and ease of use. Leveraging locally-run Large Language Models (LLMs) and voice-to-text models, ReportEase ensures your data remains secure within your own infrastructure—no cloud dependencies.
+**ReportEase** streamlines secure report generation for teams using an AI agent built with LangGraph, local AI solutions (Llama 3.2 3B, Whisper models) and a Flask-based web interface, ensuring efficiency and ease of use without cloud dependencies.
 
 ## Motivation
 
-The primary motivation behind ReportEase is to significantly optimize the workflow of employees by providing a straightforward and user-friendly design. By exclusively utilizing completely open-source, locally hosted models, ReportEase ensures compliance with corporate data policies, eliminating reliance on cloud-based solutions and protecting company confidentiality.
+The primary motivation behind ReportEase is to significantly optimize employee workflows with a straightforward, user-friendly design. By exclusively utilizing open-source, locally-hosted models, ReportEase maintains strict compliance with corporate data policies.
 
 ## Features
 
 ### Flexible PDF Generation
-- Seamlessly integrates your company's specific PDF formats using FPDF.
-- Supports custom-defined templates, including precise placement of signatures via PNG uploads.
+- Integrates customizable company PDF templates via FPDF.
+- Supports precise signature placement (PNG uploads).
 
 ### Voice-to-Text Transcription
-- **Accurate Mode:** Utilizes Whisper 3.5 Turbo, offering highly precise transcription results.
-- **Fast Mode:** Employs Whisper Base for quicker transcription, suitable for devices with lower hardware specifications.
-- Both modes are optimized with PyWhisperCPP, significantly enhancing transcription speed and efficiency even on resource-limited hardware like the MacBook Air M1 (2020).
+- **Accurate Mode:** Whisper 3.5 Turbo (high precision).
+- **Fast Mode:** Whisper Base (optimized speed).
+- PyWhisperCPP optimizes performance, even on low-end hardware.
 
 ### Advanced Agentic System (LangGraph)
-- Delivers structured, consistent, and high-quality content generation.
-- Features automated paragraph structuring and built-in function-calling capabilities, simplifying complex report creation workflows.
+- Automates content structuring with consistent, high-quality outputs.
+- Supports built-in function-calling for complex workflows.
 
 ### Web-Based Interface
-- Developed using Flask, providing a simple, intuitive interface accessible through web browsers.
-- Offers seamless interaction with all features, including transcription, PDF generation, and template customization.
+- User-friendly Flask interface for easy access and customization.
 
 ## Technical Stack
-- **Local LLM:** Ensures secure, on-premises content generation.
-- **Whisper Models:** Voice transcription using Whisper 3.5 Turbo (accurate) and Whisper Base (fast).
-- **PyWhisperCPP:** Optimizes transcription models for high performance.
-- **FPDF:** Manages customizable PDF generation based on user-defined templates.
-- **LangGraph:** Core agentic framework handling intelligent content structuring and automation.
-- **Flask:** Web-based interface framework for user-friendly interactions.
+- **Local LLM:** Llama 3.2 3B for efficient and quality outputs.
+- **Whisper Models:** Whisper 3.5 Turbo (accurate), Whisper Base (fast).
+- **PyWhisperCPP:** Transcription optimization.
+- **FPDF:** PDF template generation.
+- **LangGraph:** Intelligent content structuring.
+- **Flask:** Web interface.
 
 ## Todo
 
-- Implement file processing using the Unstructured library integrated with the LangGraph agentic system.
-- Add fallback OCR capabilities using Doctr models (`db_resnet50` / `crnn_vgg16_bn`) for processing unrecognizable or problematic file formats.
+- Implement file processing using Unstructured library with LangGraph integration.
+- Add OCR fallback via Doctr models (`db_resnet50` / `crnn_vgg16_bn`) for problematic files.
 
 ## Getting Started
 
-(Provide detailed instructions here on how users can install dependencies, set up the environment, and run the application.)
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/M0ckenv1r0n/ReportEase.git
+   cd ReportEase
+
+2. **Create and activate a virtual environment:**:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate   # On Windows: venv\Scripts\activate
+
+3. **Install all required Python packages from the requirements.txt file:**
+    ```bash
+    pip install -r requirements.txt
+
+### Install External Tools
+1.1 **Install Ollama**
+    You can install Ollama using one of the following methods:
+
+    •	Using Homebrew (macOS/Linux):
+        If you don’t have Homebrew, install it from https://brew.sh/.
+
+   ```bash
+   brew install ollama
+   ```
+
+    •	Alternatively:
+    Visit the Ollama (https://ollama.com/) website and follow the provided installation instructions.
+
+1.2 **Download the Llama 3.2 3B Model**
+    After installing Ollama, download the required model by running:
+
+    ```bash
+        ollama pull llama3.2
+    ```
+
+2.1 **Install pywhispercpp**
+    Install pywhispercpp using pip:
+
+    ```bash
+        pip install pywhispercpp
+    ```
+
+2.1 **Install pywhispercpp**
+    Install pywhispercpp using pip:
+
+    ```bash
+        pip install pywhispercpp
+    ```
+
+2.2 **Install pywhispercpp**
+    Download the necessary Whisper models (whisper3.5-turbo-model, whisper-base-model):
+
+    ```bash
+        pip install pywhispercpp
+    ```
 
 ## Feedback and Contributions
 
-Your feedback is greatly appreciated. Contributions to further enhance ReportEase are welcome!
+Feedback and contributions are welcome!
+
