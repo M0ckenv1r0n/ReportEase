@@ -43,58 +43,55 @@ The primary motivation behind ReportEase is to significantly optimize employee w
    ```bash
    git clone https://github.com/M0ckenv1r0n/ReportEase.git
    cd ReportEase
+   ```
 
-2. **Create and activate a virtual environment:**:
+2. **Create and activate a virtual environment**:
    ```bash
    python -m venv venv
    source venv/bin/activate   # On Windows: venv\Scripts\activate
+   ```
 
-3. **Install all required Python packages from the requirements.txt file:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-**Install External Tools**
+3. **Install all required Python packages from the requirements.txt file**:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-4.1 **Install Ollama**
-    You can install Ollama using one of the following methods:
+## Install External Tools
 
-    •	Using Homebrew (macOS/Linux):
-        If you don’t have Homebrew, install it from https://brew.sh/.
+4. **Install Ollama**  
+   You can install Ollama using one of the following methods:
 
-    ```bash
-    brew install ollama
-    ```
+   - **Using Homebrew (macOS/Linux)**:  
+     If you don’t have Homebrew, install it from [https://brew.sh/](https://brew.sh/).
 
-    •	Alternatively:
-        Visit the Ollama (https://ollama.com/) website and follow the provided installation instructions.
+     ```bash
+     brew install ollama
+     ```
 
-1.2 **Download the Llama 3.2 3B Model**
-    After installing Ollama, download the required model by running:
+   - **Alternatively**:  
+     Visit the [Ollama website](https://ollama.com/) and follow the provided installation instructions.
 
-    ```bash
-        ollama pull llama3.2
-    ```
+5. **Download the Llama 3.2 3B Model**  
+   After installing Ollama, download the required model by running:
 
-2.1 **Install pywhispercpp**
-    Install pywhispercpp using pip:
+   ```bash
+   ollama pull llama3.2
+   ```
 
-    ```bash
-        pip install pywhispercpp
-    ```
+6. **Install pywhispercpp**  
+   Install `pywhispercpp` using pip:
 
-2.1 **Install pywhispercpp**
-    Install pywhispercpp using pip:
+   ```bash
+   pip install pywhispercpp
+   ```
 
-    ```bash
-        pip install pywhispercpp
-    ```
+7. **Download Whisper Models**  
+   Download the necessary Whisper models (e.g., `whisper3.5-turbo-model`, `whisper-base-model`):
 
-2.2 **Install pywhispercpp**
-    Download the necessary Whisper models (whisper3.5-turbo-model, whisper-base-model):
+   ```bash
+   pip install pywhispercpp
+   ```
 
-    ```bash
-        pip install pywhispercpp
-    ```
 
 ## Feedback and Contributions
 
