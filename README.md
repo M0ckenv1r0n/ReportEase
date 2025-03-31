@@ -52,20 +52,21 @@ The primary motivation behind ReportEase is to significantly optimize employee w
 3. **Install all required Python packages from the requirements.txt file:**
     ```bash
     pip install -r requirements.txt
+    ```
+**Install External Tools**
 
-### Install External Tools
-1.1 **Install Ollama**
+4.1 **Install Ollama**
     You can install Ollama using one of the following methods:
 
     •	Using Homebrew (macOS/Linux):
         If you don’t have Homebrew, install it from https://brew.sh/.
 
-   ```bash
-   brew install ollama
-   ```
+    ```bash
+    brew install ollama
+    ```
 
     •	Alternatively:
-    Visit the Ollama (https://ollama.com/) website and follow the provided installation instructions.
+        Visit the Ollama (https://ollama.com/) website and follow the provided installation instructions.
 
 1.2 **Download the Llama 3.2 3B Model**
     After installing Ollama, download the required model by running:
