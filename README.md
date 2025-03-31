@@ -79,19 +79,14 @@ The primary motivation behind ReportEase is to significantly optimize employee w
    ```
 
 6. **Install pywhispercpp**  
-   Install `pywhispercpp` using pip:
-
-   ```bash
-   pip install pywhispercpp
-   ```
+   Follow the installation guidance from the official repository: [https://github.com/absadiki/pywhispercpp](https://github.com/absadiki/pywhispercpp)
 
 7. **Download Whisper Models**  
-   Download the necessary Whisper models (e.g., `whisper3.5-turbo-model`, `whisper-base-model`):
+   Download the necessary Whisper models and test which one is more suitable for your system (e.g., `whisper3.5-turbo-model`, `whisper-base-model`) by running the following command inside the project folder:
 
    ```bash
-   pip install pywhispercpp
+   test-download-whisper.py
    ```
-
 
 ## Feedback and Contributions
 
