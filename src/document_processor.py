@@ -6,7 +6,7 @@ from typing import Optional
 import os
 
 def process_input_document(text_input: str, output_pdf_path: str, signature_path: Optional[str],
-                           model: str = "gpt-4o-mini", input_filepath: Optional[str] = None) -> bool:
+                           input_filepath: Optional[str] = None) -> bool:
     """Process input text and an optional PDF file to generate a structured report PDF."""
     try:
         if input_filepath:
@@ -32,7 +32,7 @@ def process_input_document(text_input: str, output_pdf_path: str, signature_path
                     return False
             # result = edit_pdf_content(text_input, input_filepath, output_pdf_path)
         else:
-            content_dict = create_structured_report(text_input, model_choice=model)
+            content_dict = create_structured_report(text_input)
             title = content_dict.pop("Title", "Generated Report")
             result = generate_report_from_dict(content=content_dict, filename=output_pdf_path, title=title, signature_image=signature_path)
         return result
