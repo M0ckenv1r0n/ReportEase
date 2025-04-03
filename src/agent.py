@@ -13,8 +13,8 @@ class Paragraph(BaseModel):
         key (str): A unique identifier or title for the paragraph.
         text (str): The content of the paragraph.
     """
-    key: str = Field("your key placeholder", description="A placeholder for the paragraph key (title)")
-    text: str = Field("your text placeholder", description="A placeholder for the paragraph text")
+    key: str = Field(description="A placeholder for the paragraph key (title)")
+    text: str = Field(description="A placeholder for the paragraph text")
 
 class Report(BaseModel):
     """
@@ -24,15 +24,10 @@ class Report(BaseModel):
         Title (str): The title of the report.
         paragraphs (List[Paragraph]): A list of paragraphs, each represented as a dictionary 
             containing 'key' and 'text' entries.
-    
-    Note:
-        Additional fields are allowed in the output due to the 'extra = "allow"' configuration.
     """
     Title: str = Field(..., description="The title of the report")
     paragraphs: List[Paragraph] = Field([], description="A list of paragraphs with keys and text")
 
-    class Config:
-        extra = "allow"
 def flatten_report(report: Report) -> dict:
     data = report.__dict__
 
@@ -52,23 +47,26 @@ def flatten_report(report: Report) -> dict:
 class ReportAgent:
     def __init__(self, temperature: float = 0.0, **model_kwargs: Any) -> None:
         self.human_msg = (
-            "Generate a structured report in JSON format with a fixed 'Title' field and additional paragraph keys."
-            "Your output must follow the JSON schema provided. Based on the following input: {input_text}"
+            "Create a clear, formal, and well-structured report based on the following input: {input_text}. The report should look official."
         )
+
         self.section_writer_instructions = (
-            "You are an expert technical writer. Your task is to create a short, well-structured, and officially looking report."
+            "You are a professional technical writer. Your task is to generate a formal, structured, and official-looking report."
+            "Format your response as JSON. Include a fixed 'Title' field and additional paragraph sections as separate keys."
+            "Your output must follow the given JSON schema."
         )
         logger.info("Initializing ReportAgent with model_choice=%s", LLM_MODEL)
         # self.llm = ChatOpenAI(model=LLM_MODEL, temperature=temperature, **model_kwargs)
-        self.llm = ChatOllama(model=LLM_MODEL, temperature=1.0, **model_kwargs)
-        self.model_with_structure = self.llm.with_structured_output(Report, method="function_calling")
+        self.llm = ChatOllama(model=LLM_MODEL, temperature=temperature, **model_kwargs)
+        self.model_with_structure = self.llm.with_structured_output(Report)
 
     def generate(self, text: str) -> Dict[str, Any]:
         """Generate a structured report from the given input text."""
         try:
+            final_msg = self.human_msg.format(input_text = text)
             result = self.model_with_structure.invoke([
                 SystemMessage(content=self.section_writer_instructions),
-                HumanMessage(content=self.human_msg.format(input_text=text))
+                HumanMessage(content=final_msg)
             ])
             logger.info("LLM returned structured report: %s", result)
             return result
