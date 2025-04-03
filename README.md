@@ -75,7 +75,7 @@ The primary motivation behind ReportEase is to significantly optimize employee w
    After installing Ollama, download the required model by running:
 
    ```bash
-   ollama pull llama3.2
+   ollama pull llama3.2:3b-instruct-q5_K_M
    ```
 
 6. **Install pywhispercpp**  

@@ -1,7 +1,7 @@
 import os
 import logging
 # LLM Model
-LLM_MODEL = "llama3.2"
+LLM_MODEL = "llama3.2:3b-instruct-q5_K_M"
 
 # Base directory for the project
 BASE_DIR: str = os.path.abspath(os.path.dirname(__file__))

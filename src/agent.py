@@ -60,7 +60,7 @@ class ReportAgent:
         )
         logger.info("Initializing ReportAgent with model_choice=%s", LLM_MODEL)
         # self.llm = ChatOpenAI(model=LLM_MODEL, temperature=temperature, **model_kwargs)
-        self.llm = ChatOllama(model=LLM_MODEL, temperature=temperature, **model_kwargs)
+        self.llm = ChatOllama(model=LLM_MODEL, temperature=1.0, **model_kwargs)
         self.model_with_structure = self.llm.with_structured_output(Report, method="function_calling")
 
     def generate(self, text: str) -> Dict[str, Any]:
@@ -80,7 +80,8 @@ def create_structured_report(text_input: str) -> Dict[str, Any]:
     """Generate a structured report dictionary from input text."""
     try:
         agent = ReportAgent()
-        return flatten_report(agent.generate(text_input))
+        output = agent.generate(text_input)
+        return flatten_report(output)
     except Exception as e:
         logger.exception("An error occurred during report generation: %s", e)
         return {}
